@@ -1,32 +1,45 @@
-```css @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-border: var(--border);
-  --radius-lg: var(--radius);
-}
-
+/* КРИСТАЛЬНО ЧИСТЫЕ МАТОВЫЕ ТОКЕНЫ ИЗ TWEAKCN */
 :root {
   --background: oklch(0.1776 0 0);
-  /* Тёмный матовый графит */
+  /* Глубокий матовый фон графита */
   --card: oklch(0.2134 0 0);
-  /* Панели */
+  /* Цвет панелей квиза и калькулятора */
   --foreground: oklch(0.9491 0 0);
-  /* Белый текст */
+  /* Мягкий контрастный белый текст */
   --primary: oklch(0.9247 0.0524 66.1732);
-  /* Акцент */
+  /* Фирменный белый акцент для кнопок */
   --border: oklch(0.2351 0.0115 91.7467);
-  /* Тонкие обводки */
+  /* Ультратонкие современные границы блоков */
   --muted-foreground: oklch(0.7699 0 0);
-  /* Серый цвет */
+  /* Приглушенный серый для подзаголовков */
   --radius: 0.5rem;
 }
 
+/* ПРИНУДИТЕЛЬНОЕ ПРИМЕНЕНИЕ ПАЛИТРЫ */
 body {
   background-color: var(--background) !important;
   color: var(--foreground) !important;
 }
 
+/* СТИЛИЗАЦИЯ И ИСПРАВЛЕНИЕ СЕТКИ СРЕДСТВАМИ TAILWIND */
+.quiz-card,
+.calc-box,
+.lead-box {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+input {
+  background-color: var(--background) !important;
+  border-color: var(--border) !important;
+}
+
+footer {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+/* ФИРМЕННАЯ ПЛОТНАЯ ПОСАДКА БУКВ APPLE TIGHT */
 h1,
 h2,
 h3 {
