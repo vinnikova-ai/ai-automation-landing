@@ -118,8 +118,7 @@ body {
 /* СЕКЦИИ ВОРОНКИ */
 .lead-magnet-section,
 .quiz-section,
-.calculator-section,
-.case-section {
+.calculator-section {
   padding: 120px 0;
   border-top: 1px solid var(--border);
 }
@@ -244,118 +243,6 @@ body {
   font-weight: 800;
   color: #fff;
   font-family: 'JetBrains Mono', monospace;
-}
-
-/* КЕЙС ПОД СРИНШОТ */
-.case-description {
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--muted-foreground);
-  margin-bottom: 40px;
-}
-
-/* КЕЙС: макет под скриншот */
-.shot {
-  --neon: oklch(0.88 0.2 150);
-  margin: 0;
-  display: grid;
-  place-items: center;
-  padding: 48px 24px;
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.shot>* {
-  grid-area: 1 / 1;
-}
-
-.shot-img {
-  z-index: 1;
-  width: 100%;
-  max-height: 520px;
-  object-fit: contain;
-  background-color: var(--card);
-  border-radius: var(--radius);
-}
-
-.phone {
-  width: 260px;
-  padding: 20px 18px;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--muted-foreground);
-}
-
-.ph-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 10px;
-}
-
-.ph-head b {
-  font-size: 34px;
-  letter-spacing: -0.03em;
-  color: var(--neon);
-  text-shadow: 0 0 14px color-mix(in oklch, var(--neon) 55%, transparent);
-}
-
-.ph-list {
-  list-style: none;
-  margin: 0 0 18px;
-  padding: 0;
-}
-
-.ph-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.ph-list li::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--muted-foreground);
-}
-
-.ph-list li.on {
-  color: var(--foreground);
-}
-
-.ph-list li.on::before {
-  background-color: var(--neon);
-  border-color: var(--neon);
-}
-
-.ph-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  height: 56px;
-  margin-bottom: 14px;
-}
-
-.ph-bars i {
-  flex: 1;
-  background-color: color-mix(in oklch, var(--neon) 70%, var(--card));
-  border-radius: 2px;
-}
-
-.phone small {
-  font-size: 10px;
 }
 
 /* ФУТЕР */
