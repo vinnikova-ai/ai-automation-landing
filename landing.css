@@ -1,3 +1,4 @@
+/* v3: mobile fixes */
 :root {
   --background: oklch(0.1776 0 0);
   /* Тёмный матовый графит из TweakCN */
@@ -18,12 +19,17 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 .container {
@@ -50,7 +56,9 @@ body {
 }
 
 .section-title {
-  font-size: 36px;
+  font-size: clamp(26px, 7vw, 36px);
+  text-wrap: balance;
+  overflow-wrap: break-word;
   font-weight: 800;
   text-align: center;
   letter-spacing: -0.03em;
@@ -62,6 +70,7 @@ body {
 /* HERO SECTION */
 .hero-section {
   min-height: 85vh;
+  min-height: 85svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +83,8 @@ body {
 }
 
 .hero-title {
-  font-size: 48px;
+  font-size: clamp(32px, 9vw, 48px);
+  text-wrap: balance;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.04em;
@@ -119,7 +129,7 @@ body {
 .lead-magnet-section,
 .quiz-section,
 .calculator-section {
-  padding: 120px 0;
+  padding: clamp(72px, 14vw, 120px) 0;
   border-top: 1px solid var(--border);
 }
 
@@ -127,13 +137,13 @@ body {
 .lead-box {
   background-color: var(--card);
   border: 1px solid var(--border);
-  padding: 32px;
+  padding: clamp(20px, 5vw, 32px);
   border-radius: var(--radius);
 }
 
 .input-group {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 16px;
   margin-bottom: 20px;
 }
@@ -144,7 +154,9 @@ body {
   padding: 14px 18px;
   border-radius: var(--radius);
   color: #fff;
-  font-size: 15px;
+  font-size: 16px; /* 16px — иначе iOS зумит страницу при фокусе */
+  width: 100%;
+  min-width: 0;
   outline: none;
   transition: border-color 0.2s;
 }
@@ -156,7 +168,7 @@ body {
 /* КВИЗ */
 .quiz-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 20px;
 }
 
@@ -193,7 +205,7 @@ body {
 .calc-box {
   background-color: var(--card);
   border: 1px solid var(--border);
-  padding: 36px;
+  padding: clamp(20px, 5vw, 36px);
   border-radius: var(--radius);
 }
 
@@ -210,6 +222,8 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex: 1;
+  min-width: 0;
 }
 
 .calc-item input {
@@ -217,17 +231,21 @@ body {
   width: 16px;
   height: 16px;
   accent-color: #fff;
+  flex-shrink: 0;
 }
 
 .calc-item .price {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
+  white-space: nowrap;
   color: #fff;
 }
 
 .calc-total {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   align-items: center;
   margin: 36px 0 24px 0;
 }
@@ -239,7 +257,8 @@ body {
 }
 
 .total-price {
-  font-size: 32px;
+  font-size: clamp(26px, 8vw, 32px);
+  white-space: nowrap;
   font-weight: 800;
   color: #fff;
   font-family: 'JetBrains Mono', monospace;
@@ -269,4 +288,21 @@ body {
 
 .footer-section a:hover {
   text-decoration: underline;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width: 560px) {
+  .calc-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .calc-item label {
+    flex: none;
+  }
+
+  .calc-item .price {
+    padding-left: 30px;
+  }
 }
