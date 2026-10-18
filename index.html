@@ -11,126 +11,147 @@
   <link
     href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <!-- Исправленный путь к стилям без папки static -->
+  <!-- Подключаем ядро Tailwind CSS v4 -->
+  <script src="https://jsdelivr.net"></script>
+  <!-- Подключаем наши кастомные матовые токены из TweakCN -->
   <link rel="stylesheet" href="landing.css">
 </head>
 
-<body>
+<body class="bg-background text-foreground antialiased m-0 p-0 font-sans">
 
   <!-- ЭКРАН 1: HERO SECTION -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <span class="eyebrow">PREMIUM LLM SOLUTIONS</span>
-      <h1 class="hero-title">Перенесите ваш бизнес в Telegram. Разработка кастомных Web Apps и ИИ-агентов под ключ</h1>
-      <p class="hero-subtitle">Интегрируем нейросети Claude/ChatGPT в ваши бизнес-процессы. Создаем легковесные,
-        асинхронные мини-приложения на Python (FastAPI/aiogram 3), которые автоматизируют до 70% рутины, CRM и
-        аналитики.</p>
-      <button class="btn-primary" onclick="scrollToSection('quiz-section')">Рассчитать стоимость проекта</button>
+  <section class="min-height-[85vh] flex items-center justify-center text-center px-6">
+    <div class="max-w-[850px]">
+      <span
+        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4">PREMIUM
+        LLM SOLUTIONS</span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-[-0.03em] text-white mb-6">Перенесите ваш
+        бизнес в Telegram. Разработка кастомных Web Apps и ИИ-агентов под ключ</h1>
+      <p class="text-lg leading-relaxed text-[var(--muted-foreground)] mb-11">Интегрируем нейросети Claude/ChatGPT в
+        ваши бизнес-процессы. Создаем легковесные, асинхронные мини-приложения на Python (FastAPI/aiogram 3), которые
+        автоматизируют до 70% рутины, CRM и аналитики.</p>
+      <button
+        class="bg-white text-black text-sm font-semibold px-9 py-3.5 border-none rounded-full cursor-pointer transition-all active:scale-95 hover:opacity-90"
+        onclick="scrollToSection('quiz-section')">Рассчитать стоимость проекта</button>
     </div>
   </section>
 
   <!-- ЭКРАН 2: ЛИД-МАГНИТ -->
-  <section class="lead-magnet-section">
-    <div class="container m-max">
-      <span class="eyebrow">БЕСПЛАТНЫЙ ГАЙД</span>
-      <h2 class="section-title">5 процессов в вашей компании, которые можно передать нейросетям уже сегодня</h2>
-      <div class="lead-box">
-        <div class="input-group">
-          <input type="text" id="lead-name" placeholder="Ваше имя" required>
-          <input type="text" id="lead-tg" placeholder="Telegram @username" required>
+  <section class="py-[120px] border-t border-[var(--border)]">
+    <div class="max-w-[700px] mx-auto px-6">
+      <span
+        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4 text-center">БЕСПЛАТНЫЙ
+        ГАЙД</span>
+      <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">5 процессов в вашей компании,
+        которые можно передать нейросетям уже сегодня</h2>
+      <div class="bg-[var(--card)] border border-[var(--border)] p-8 rounded-[var(--radius)]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          <input type="text" id="lead-name" placeholder="Ваше имя"
+            class="bg-[var(--background)] border border-[var(--border)] p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30"
+            required>
+          <input type="text" id="lead-tg" placeholder="Telegram @username"
+            class="bg-[var(--background)] border border-[var(--border)] p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30"
+            required>
         </div>
-        <button class="btn-primary w-full" onclick="downloadGuide()">Получить гайд в Telegram</button>
+        <button
+          class="w-full bg-white text-black text-sm font-semibold py-3.5 border-none rounded-full cursor-pointer transition-all active:scale-95 hover:opacity-90"
+          onclick="downloadGuide()">Получить гайд в Telegram</button>
       </div>
     </div>
   </section>
 
   <!-- ЭКРАН 3: ИНТЕРАКТИВНЫЙ ИИ-КВИЗ -->
-  <section id="quiz-section" class="quiz-section">
-    <div class="container">
-      <span class="eyebrow" id="quiz-step-title">Шаг 1 из 3</span>
-      <h2 class="section-title" id="quiz-question">Какая у вас сфера бизнеса?</h2>
+  <section id="quiz-section" class="py-[120px] border-t border-[var(--border)]">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <span
+        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4 text-center"
+        id="quiz-step-title">Шаг 1 из 3</span>
+      <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white" id="quiz-question">Какая у вас
+        сфера бизнеса?</h2>
 
-      <div class="quiz-grid" id="quiz-options-container">
-        <!-- Варианты шага 1 -->
-        <div class="quiz-card" onclick="nextQuizStep('EdTech/Школы')">
-          <h3>EdTech / Онлайн-школы</h3>
-          <p>Автоматизация расписания, контроля транзакций, оплат и AlfaCRM/AmoCRM.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="quiz-options-container">
+        <!-- Шаг 1 карточки -->
+        <div
+          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          onclick="nextQuizStep('EdTech/Школы')">
+          <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">EdTech / Онлайн-школы</h3>
+          <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Автоматизация расписания, контроля
+            транзакций, оплат и AlfaCRM/AmoCRM.</p>
         </div>
-        <div class="quiz-card" onclick="nextQuizStep('Ритейл')">
-          <h3>Ритейл / E-commerce</h3>
-          <p>Интеграция товарных матриц, воронки продаж и автоматическая обработка лидов.</p>
+        <div
+          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          onclick="nextQuizStep('Ритейл')">
+          <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Ритейл / E-commerce</h3>
+          <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Интеграция товарных матриц, воронки
+            продаж и автоматическая обработка лидов.</p>
         </div>
-        <div class="quiz-card" onclick="nextQuizStep('Услуги')">
-          <h3>Сфера услуг / Фриланс</h3>
-          <p>Сбор заявок, запись клиентов и репутационный маркетинг в гео-сервисах.</p>
+        <div
+          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          onclick="nextQuizStep('Услуги')">
+          <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Сфера услуг / Фриланс</h3>
+          <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Сбор заявок, запись клиентов и
+            репутационный маркетинг в гео-сервисах.</p>
         </div>
-        <div class="quiz-card" onclick="nextQuizStep('Производство')">
-          <h3>Производство / Инженерия</h3>
-          <p>Декомпозиция ТЗ, ведение проектных логов и автоматизация отчетности.</p>
+        <div
+          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          onclick="nextQuizStep('Производство')">
+          <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Производство / Инженерия</h3>
+          <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Декомпозиция ТЗ, ведение проектных логов
+            и автоматизация отчетности.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ЭКРАН 4: ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР -->
-  <section id="calc-section" class="calculator-section">
-    <div class="container m-max">
-      <span class="eyebrow">ПРОЗРАЧНЫЙ РАСЧЕТ</span>
-      <h2 class="section-title">Выберите необходимые компоненты системы</h2>
-      <div class="calc-box">
-        <div class="calc-item">
-          <label><input type="checkbox" value="30000" onchange="calculateTotal()" checked disabled> Разработка
-            асинхронного ядра бота (aiogram 3)</label>
-          <span class="price">30 000 ₽</span>
+  <section id="calc-section" class="py-[120px] border-t border-[var(--border)]">
+    <div class="max-w-[700px] mx-auto px-6">
+      <span
+        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4 text-center">ПРОЗРАЧНЫЙ
+        РАСЧЕТ</span>
+      <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">Выберите необходимые
+        компоненты системы</h2>
+      <div class="bg-[var(--card)] border border-[var(--border)] p-9 rounded-[var(--radius)]">
+        <div class="flex justify-between items-center py-4 border-b border-[var(--border)] text-sm">
+          <label class="flex items-center cursor-pointer"><input type="checkbox" value="30000"
+              onchange="calculateTotal()" class="mr-3.5 w-4 h-4 accent-white" checked disabled> Разработка асинхронного
+            ядра бота (aiogram 3)</label>
+          <span class="font-mono font-medium text-white">30 000 ₽</span>
         </div>
-        <div class="calc-item">
-          <label><input type="checkbox" value="20000" onchange="calculateTotal()" id="db-addon"> Интеграция базы данных
+        <div class="flex justify-between items-center py-4 border-b border-[var(--border)] text-sm">
+          <label class="flex items-center cursor-pointer"><input type="checkbox" value="20000"
+              onchange="calculateTotal()" id="db-addon" class="mr-3.5 w-4 h-4 accent-white"> Интеграция базы данных
             SQLite & SQLAlchemy ORM</label>
-          <span class="price">+20 000 ₽</span>
+          <span class="font-mono font-medium text-white">+20 000 ₽</span>
         </div>
-        <div class="calc-item">
-          <label><input type="checkbox" value="25000" onchange="calculateTotal()" id="ai-addon"> Подключение
-            ИИ-аналитики (API Anthropic Claude / LLM)</label>
-          <span class="price">+25 000 ₽</span>
+        <div class="flex justify-between items-center py-4 border-b border-[var(--border)] text-sm">
+          <label class="flex items-center cursor-pointer"><input type="checkbox" value="25000"
+              onchange="calculateTotal()" id="ai-addon" class="mr-3.5 w-4 h-4 accent-white"> Подключение ИИ-аналитики
+            (API Anthropic Claude / LLM)</label>
+          <span class="font-mono font-medium text-white">+25 000 ₽</span>
         </div>
-        <div class="calc-item">
-          <label><input type="checkbox" value="35000" onchange="calculateTotal()" id="ui-addon"> Проектирование
-            визуального интерфейса Telegram Web App</label>
-          <span class="price">+35 000 ₽</span>
+        <div class="flex justify-between items-center py-4 border-b border-[var(--border)] text-sm">
+          <label class="flex items-center cursor-pointer"><input type="checkbox" value="35000"
+              onchange="calculateTotal()" id="ui-addon" class="mr-3.5 w-4 h-4 accent-white"> Проектирование визуального
+            интерфейса Telegram Web App</label>
+          <span class="font-mono font-medium text-white">+35 000 ₽</span>
         </div>
-        <div class="calc-total">
-          <h3>Итоговая стоимость MVP:</h3>
-          <span class="total-price" id="total-render">30 000 ₽</span>
+        <div class="flex justify-between items-center my-8">
+          <h3 class="m-0 text-base font-semibold">Итоговая стоимость MVP:</h3>
+          <span class="text-3xl font-extrabold text-white font-mono" id="total-render">30 000 ₽</span>
         </div>
-        <button class="btn-primary w-full" onclick="submitOrder()">Оставить заявку на концепт</button>
+        <button
+          class="w-full bg-white text-black text-sm font-semibold py-3.5 border-none rounded-full cursor-pointer transition-all active:scale-96 hover:opacity-90"
+          onclick="submitOrder()">Оставить заявку на концепт</button>
       </div>
     </div>
   </section>
 
   <!-- ЭКРАН 5: КЕЙС / ЭКСПЕРТНОСТЬ -->
-  <section class="case-section">
-    <div class="container m-max">
-      <span class="eyebrow">ЖИВОЙ ПРИМЕР</span>
-      <h2 class="section-title">Посмотрите на наше живое демо</h2>
-      <p class="case-description">Это асинхронный Full-Stack продукт, запущенный на одном легковесном сервере PaaS. Он
-        выдерживает высокие конкурентные нагрузки, верифицирует пользователей по цифровому паспорту Telegram initData и
-        генерирует еженедельный ИИ-анализ логов. Мы умеем собирать такие экосистемы с нуля.</p>
-      <div class="screenshot-placeholder">
-        <div class="neon-glow-text">Cyberpunk Neon Habit Tracker UI [Active Demo]</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ИЗЯЩНЫЙ ФУТЕР С ВАШЕЙ ССЫЛКОЙ -->
-  <footer class="footer-section">
-    <p>© 2026 Vinnikova.AI. Проект разработан в качестве демонстрационного MVP-кейса комплексной ИИ-автоматизации для
-      инженерного портфолио.</p>
-    <p>Исходный код полностью открыт на <a href="https://github.com" target="_blank">GitHub</a> | ИТ-витрина на <a
-        href="https://habr.com" target="_blank">Хабр Карьере</a></p>
-  </footer>
-
-  <!-- Исправленный путь к скриптам без папки static -->
-  <script src="landing.js"></script>
-</body>
-
-</html>
+  <section class="py-[120px] border-t border-[var(--border)]">
+    <div class="max-w-[700px] mx-auto px-6">
+      <span
+        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4 text-center">ЖИВОЙ
+        ПРИМЕР</span>
+      <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">Посмотрите на наше живое демо
+      </h2>
