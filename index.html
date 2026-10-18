@@ -5,22 +5,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vinnikova.AI — Лаборатория ИИ-автоматизации и Telegram Web Apps</title>
+
   <!-- Подключаем премиальные шрифты -->
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link
     href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
+
   <!-- Подключаем ядро Tailwind CSS v4 -->
   <script src="https://jsdelivr.net"></script>
-  <!-- Подключаем наши кастомные матовые токены из TweakCN -->
-  <link rel="stylesheet" href="landing.css">
+
+  <!-- Встраиваем наши премиальные матовые токены из TweakCN напрямую -->
+  <style>
+    :root {
+      --background: oklch(0.1776 0 0);
+      /* Тёмный матовый графит */
+      --card: oklch(0.2134 0 0);
+      /* Цвет панелей и блоков */
+      --foreground: oklch(0.9491 0 0);
+      /* Контрастный белый текст */
+      --border: oklch(0.2351 0.0115 91.7467);
+      /* Тонкие технологичные обводки */
+      --muted-foreground: oklch(0.7699 0 0);
+      /* Приглушенный серый */
+      --radius: 0.5rem;
+    }
+
+    body {
+      background-color: var(--background) !important;
+      color: var(--foreground) !important;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .quiz-card,
+    .calc-box,
+    .lead-box {
+      background-color: var(--card) !important;
+      border-color: var(--border) !important;
+    }
+
+    input {
+      background-color: var(--background) !important;
+      border-color: var(--border) !important;
+    }
+
+    footer {
+      background-color: var(--card) !important;
+      border-color: var(--border) !important;
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: -0.03em !important;
+    }
+  </style>
 </head>
 
-<body class="bg-background text-foreground antialiased m-0 p-0 font-sans">
+<body class="antialiased m-0 p-0">
 
   <!-- ЭКРАН 1: HERO SECTION -->
-  <section class="min-height-[85vh] flex items-center justify-center text-center px-6">
+  <section class="min-h-[85vh] flex items-center justify-center text-center px-6">
     <div class="max-w-[850px]">
       <span
         class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4">PREMIUM
@@ -44,14 +90,12 @@
         ГАЙД</span>
       <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">5 процессов в вашей компании,
         которые можно передать нейросетям уже сегодня</h2>
-      <div class="bg-[var(--card)] border border-[var(--border)] p-8 rounded-[var(--radius)]">
+      <div class="lead-box border p-8 rounded-[var(--radius)]">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <input type="text" id="lead-name" placeholder="Ваше имя"
-            class="bg-[var(--background)] border border-[var(--border)] p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30"
-            required>
+            class="border p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30" required>
           <input type="text" id="lead-tg" placeholder="Telegram @username"
-            class="bg-[var(--background)] border border-[var(--border)] p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30"
-            required>
+            class="border p-3.5 rounded-[var(--radius)] text-white text-sm outline-none focus:border-white/30" required>
         </div>
         <button
           class="w-full bg-white text-black text-sm font-semibold py-3.5 border-none rounded-full cursor-pointer transition-all active:scale-95 hover:opacity-90"
@@ -70,30 +114,29 @@
         сфера бизнеса?</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="quiz-options-container">
-        <!-- Шаг 1 карточки -->
         <div
-          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          class="quiz-card border p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
           onclick="nextQuizStep('EdTech/Школы')">
           <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">EdTech / Онлайн-школы</h3>
           <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Автоматизация расписания, контроля
             транзакций, оплат и AlfaCRM/AmoCRM.</p>
         </div>
         <div
-          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          class="quiz-card border p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
           onclick="nextQuizStep('Ритейл')">
           <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Ритейл / E-commerce</h3>
           <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Интеграция товарных матриц, воронки
             продаж и автоматическая обработка лидов.</p>
         </div>
         <div
-          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          class="quiz-card border p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
           onclick="nextQuizStep('Услуги')">
           <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Сфера услуг / Фриланс</h3>
           <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Сбор заявок, запись клиентов и
             репутационный маркетинг в гео-сервисах.</p>
         </div>
         <div
-          class="bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
+          class="quiz-card border p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5"
           onclick="nextQuizStep('Производство')">
           <h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">Производство / Инженерия</h3>
           <p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">Декомпозиция ТЗ, ведение проектных логов
@@ -111,7 +154,7 @@
         РАСЧЕТ</span>
       <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">Выберите необходимые
         компоненты системы</h2>
-      <div class="bg-[var(--card)] border border-[var(--border)] p-9 rounded-[var(--radius)]">
+      <div class="calc-box border p-9 rounded-[var(--radius)]">
         <div class="flex justify-between items-center py-4 border-b border-[var(--border)] text-sm">
           <label class="flex items-center cursor-pointer"><input type="checkbox" value="30000"
               onchange="calculateTotal()" class="mr-3.5 w-4 h-4 accent-white" checked disabled> Разработка асинхронного
@@ -148,10 +191,3 @@
   </section>
 
   <!-- ЭКРАН 5: КЕЙС / ЭКСПЕРТНОСТЬ -->
-  <section class="py-[120px] border-t border-[var(--border)]">
-    <div class="max-w-[700px] mx-auto px-6">
-      <span
-        class="font-mono text-[11px] font-medium tracking-[0.15em] text-[var(--muted-foreground)] uppercase block mb-4 text-center">ЖИВОЙ
-        ПРИМЕР</span>
-      <h2 class="text-3xl font-extrabold text-center tracking-[-0.03em] mb-10 text-white">Посмотрите на наше живое демо
-      </h2>
