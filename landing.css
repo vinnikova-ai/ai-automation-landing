@@ -1,0 +1,62 @@
+:root {
+  color-scheme: dark;
+  --background: oklch(0.1776 0 0);
+  --card: oklch(0.2134 0 0);
+  --foreground: oklch(0.9491 0 0);
+  --primary: oklch(0.9247 0.0524 66.1732);
+  --border: oklch(0.2351 0.0115 91.7467);
+  --muted-foreground: oklch(0.7699 0 0);
+  --radius: 0.5rem;
+  --line: color-mix(in oklch, var(--foreground) 16%, transparent);
+  --sans: 'Manrope', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--background); color: var(--foreground); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.narrow { max-width: 720px; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+h1, h2 { letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 24px; text-wrap: balance; }
+h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 800; }
+h2 { font-size: clamp(24px, 3.4vw, 34px); font-weight: 700; }
+.eyebrow { display: block; margin-bottom: 20px; font: 500 11px/1.4 var(--mono); letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-foreground); }
+.lead { font-size: clamp(16px, 2vw, 19px); color: var(--muted-foreground); margin: 0 0 40px; max-width: 62ch; }
+
+.hero { min-height: 88svh; display: flex; align-items: center; padding: 64px 0; }
+.block { padding: clamp(64px, 10vw, 112px) 0; border-top: 1px solid var(--border); }
+
+.btn { font: 600 15px var(--sans); color: oklch(0.1776 0 0); background: var(--primary); border: 0; border-radius: 9999px; padding: 14px 32px; cursor: pointer; transition: transform .15s ease, opacity .15s ease; }
+.btn:hover { opacity: .9; }
+.btn:active { transform: scale(.96); }
+.btn:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+
+.panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(20px, 4vw, 32px); }
+#lead-form { display: grid; gap: 12px; }
+input:not([type=checkbox]) { width: 100%; font: 400 16px var(--sans); color: inherit; background: var(--background); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+input::placeholder { color: var(--muted-foreground); }
+#lead-form .btn { justify-self: start; margin-top: 8px; }
+.note { margin: 0; min-height: 1.5em; font-size: 14px; color: var(--muted-foreground); }
+.note.err { color: oklch(0.75 0.15 25); }
+
+.bar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 40px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 33.33%; background: var(--primary); transition: width .3s ease; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.opt { font: 600 16px var(--sans); text-align: left; color: inherit; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; cursor: pointer; transition: border-color .2s ease, background-color .2s ease; }
+.opt:hover { border-color: var(--line); }
+.opt.active { border-color: var(--primary); background: color-mix(in oklch, var(--primary) 8%, var(--card)); }
+.quiz-nav { margin-top: 32px; }
+
+.row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.row b { white-space: nowrap; font-weight: 600; }
+.row input { margin-right: 10px; accent-color: var(--primary); }
+.total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 24px; }
+.total output { font-size: clamp(26px, 5vw, 36px); font-weight: 800; letter-spacing: -0.03em; }
+
+.shot { aspect-ratio: 16 / 10; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: var(--radius); background: var(--card); color: var(--muted-foreground); font-size: 14px; }
+
+footer { padding: 48px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; line-height: 1.5; color: var(--muted-foreground); }
+footer p { max-width: 640px; margin: 0 auto; }
+footer a { color: var(--foreground); }

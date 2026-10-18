@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Vinnikova.AI — Лаборатория ИИ-автоматизации и Telegram Web Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+<main>
+
+<!-- ЭКРАН 1: Hero -->
+<section class="hero">
+  <div class="wrap narrow">
+    <span class="eyebrow">Vinnikova.AI — Лаборатория ИИ-автоматизации и Telegram Web Apps</span>
+    <h1>Перенесите ваш бизнес в Telegram. Разработка кастомных Web Apps и ИИ-агентов под ключ</h1>
+    <p class="lead">Интегрируем нейросети Claude/ChatGPT в ваши бизнес-процессы. Создаем легковесные, асинхронные мини-приложения на Python (FastAPI/aiogram 3), которые автоматизируют до 70% рутины, CRM и аналитики.</p>
+    <button class="btn" type="button" data-scroll="calc">Рассчитать стоимость проекта</button>
+  </div>
+</section>
+
+<!-- ЭКРАН 2: Лид-магнит -->
+<section class="block" id="guide">
+  <div class="wrap narrow">
+    <span class="eyebrow">Бесплатный гайд</span>
+    <h2>Скачать бесплатный ИИ-гайд: 5 процессов в вашей компании, которые можно передать нейросетям уже сегодня</h2>
+    <form class="panel" id="lead-form" novalidate>
+      <input name="name" placeholder="Имя" aria-label="Имя" autocomplete="given-name">
+      <input name="telegram" placeholder="Telegram @username" aria-label="Telegram @username" autocomplete="off">
+      <button class="btn" type="submit">Получить гайд в Telegram</button>
+      <p class="note" id="lead-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ЭКРАН 3: Квиз -->
+<section class="block" id="quiz">
+  <div class="wrap">
+    <span class="eyebrow" id="quiz-count">Шаг 1 из 3</span>
+    <div class="bar"><i id="quiz-bar"></i></div>
+
+    <div class="quiz-step">
+      <h2>Какая у вас сфера бизнеса?</h2>
+      <div class="opts">
+        <button type="button" class="opt">EdTech/Школы</button>
+        <button type="button" class="opt">Ритейл</button>
+        <button type="button" class="opt">Услуги</button>
+        <button type="button" class="opt">Производство</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" hidden>
+      <h2>Что нужно автоматизировать?</h2>
+      <div class="opts">
+        <button type="button" class="opt" data-addon="db">Сбор заявок</button>
+        <button type="button" class="opt" data-addon="ai">Общение с клиентами</button>
+        <button type="button" class="opt" data-addon="ai">Отчеты</button>
+        <button type="button" class="opt" data-addon="db">Ведение CRM</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" hidden>
+      <h2>Где должен работать сервис?</h2>
+      <div class="opts">
+        <button type="button" class="opt">Текстовый бот в Telegram</button>
+        <button type="button" class="opt" data-addon="ui">Встроенное Web App приложение</button>
+        <button type="button" class="opt">Интеграция на сайт</button>
+      </div>
+    </div>
+
+    <div class="quiz-nav"><button class="btn" type="button" id="quiz-next" disabled>Далее</button></div>
+  </div>
+</section>
+
+<!-- ЭКРАН 4: Калькулятор -->
+<section class="block" id="calc">
+  <div class="wrap narrow">
+    <span class="eyebrow">Калькулятор стоимости</span>
+    <h2>Выберите компоненты системы</h2>
+    <div class="panel">
+      <label class="row"><span><input type="checkbox" data-price="30000" checked disabled> Разработка ядра бота на aiogram 3</span><b>30 000 ₽</b></label>
+      <label class="row"><span><input type="checkbox" data-price="20000" id="addon-db"> Интеграция базы данных SQLite/SQLAlchemy</span><b>20 000 ₽</b></label>
+      <label class="row"><span><input type="checkbox" data-price="25000" id="addon-ai"> Подключение ИИ-аналитики через Claude API</span><b>25 000 ₽</b></label>
+      <label class="row"><span><input type="checkbox" data-price="35000" id="addon-ui"> Разработка визуального Web App интерфейса (FastAPI/JS)</span><b>35 000 ₽</b></label>
+      <div class="total"><span>Итоговая стоимость</span><output id="total">30 000 ₽</output></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЭКРАН 5: Кейс -->
+<section class="block" id="case">
+  <div class="wrap narrow">
+    <span class="eyebrow">Кейс</span>
+    <h2>Посмотрите на наше живое демо</h2>
+    <p class="lead">Это асинхронный Full-Stack продукт, запущенный на одном легковесном сервере PaaS. Он выдерживает высокие нагрузки, верифицирует пользователей по цифровому паспорту Telegram initData и генерирует еженедельный ИИ-анализ логов. Мы умеем собирать такие экосистемы с нуля.</p>
+    <div class="shot" role="img" aria-label="Место под скриншот неонового трекера"><span>Скриншот неонового трекера</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ЭКРАН 6: Футер -->
+<footer>
+  <p>© 2026 Vinnikova.AI. Проект разработан в качестве демонстрационного MVP-кейса комплексной ИИ-автоматизации для инженерного портфолио. Исходный код открыт на <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>.</p>
+</footer>
+
+<script src="/static/landing.js"></script>
+</body>
+</html>
