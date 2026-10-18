@@ -1,47 +1,302 @@
-/* КРИСТАЛЬНО ЧИСТЫЕ МАТОВЫЕ ТОКЕНЫ ИЗ TWEAKCN */
 :root {
   --background: oklch(0.1776 0 0);
-  /* Глубокий матовый фон графита */
+  /* Тёмный матовый графит из TweakCN */
   --card: oklch(0.2134 0 0);
-  /* Цвет панелей квиза и калькулятора */
+  /* Цвет панелей и блоков */
   --foreground: oklch(0.9491 0 0);
-  /* Мягкий контрастный белый текст */
+  /* Контрастный белый текст */
   --primary: oklch(0.9247 0.0524 66.1732);
-  /* Фирменный белый акцент для кнопок */
+  /* Фирменный акцентный белый */
   --border: oklch(0.2351 0.0115 91.7467);
-  /* Ультратонкие современные границы блоков */
+  /* Тонкие технологичные обводки */
   --muted-foreground: oklch(0.7699 0 0);
-  /* Приглушенный серый для подзаголовков */
+  /* Приглушенный серый */
   --radius: 0.5rem;
 }
 
-/* ПРИНУДИТЕЛЬНОЕ ПРИМЕНЕНИЕ ПАЛИТРЫ */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* СТИЛИЗАЦИЯ И ИСПРАВЛЕНИЕ СЕТКИ СРЕДСТВАМИ TAILWIND */
-.quiz-card,
-.calc-box,
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.m-max {
+  max-width: 700px;
+}
+
+/* ТИПОГРАФИКА APPLE TIGHT */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -0.03em;
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+/* HERO SECTION */
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin-bottom: 44px;
+}
+
+/* КНОПКИ-КАПСУЛЫ */
+.btn-primary {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+}
+
+.w-full {
+  width: 100%;
+  display: block;
+}
+
+/* СЕКЦИИ ВОРОНКИ */
+.lead-magnet-section,
+.quiz-section,
+.calculator-section,
+.case-section {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ЛИД-МАГНИТ */
 .lead-box {
-  background-color: var(--card) !important;
-  border-color: var(--border) !important;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: var(--radius);
 }
 
-input {
-  background-color: var(--background) !important;
-  border-color: var(--border) !important;
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-footer {
-  background-color: var(--card) !important;
-  border-color: var(--border) !important;
+.input-group input {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-/* ФИРМЕННАЯ ПЛОТНАЯ ПОСАДКА БУКВ APPLE TIGHT */
-h1,
-h2,
-h3 {
-  letter-spacing: -0.03em !important;
+.input-group input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* КВИЗ */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.quiz-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.quiz-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.quiz-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.quiz-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+/* КАЛЬКУЛЯТОР */
+.calc-box {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  padding: 36px;
+  border-radius: var(--radius);
+}
+
+.calc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+
+.calc-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calc-item input {
+  margin-right: 14px;
+  width: 16px;
+  height: 16px;
+  accent-color: #fff;
+}
+
+.calc-item .price {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  color: #fff;
+}
+
+.calc-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 36px 0 24px 0;
+}
+
+.calc-total h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.total-price {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* КЕЙС ПОД СРИНШОТ */
+.case-description {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: 40px;
+}
+
+.screenshot-placeholder {
+  background-color: #0d0d0e;
+  border: 1px dashed var(--border);
+  height: 350px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-glow-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ФУТЕР */
+.footer-section {
+  padding: 80px 24px;
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+.footer-section p {
+  margin: 0 0 12px 0;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 6px;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
 }

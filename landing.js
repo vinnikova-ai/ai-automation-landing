@@ -1,3 +1,4 @@
+// Хранилище ответов квиза
 let quizAnswers = {
   businessType: "",
   automationTarget: "",
@@ -15,21 +16,22 @@ function nextQuizStep(selectedValue) {
     quizAnswers.businessType = selectedValue;
     currentStep = 2;
     renderQuizStep("Шаг 2 из 3", "Что в бизнесе нужно автоматизировать?", [
-      { title: "Сбор и обработка заявок", desc: "Захват лидов, авто-ответы клиентам, интеграция форм." },
-      { title: "Ведение CRM и аналитики", desc: "Связка логов, ведение сквозных финансовых метрик." },
-      { title: "Генерация отчетов через ИИ", desc: "Автоматический сбор данных и психологические саммари." },
-      { title: "Всё вышеперечисленное", desc: "Комплексная инфраструктура с базами данных и LLM." }
+      { title: "Сбор и обработка заявок", desc: "Захват лидов, авто-ответы клиентам, интеграция форм.", flag: "db" },
+      { title: "Ведение CRM и аналитики", desc: "Связка логов, ведение сквозных финансовых метрик.", flag: "db" },
+      { title: "Генерация отчетов через ИИ", desc: "Автоматический сбор данных и психологические саммари.", flag: "ai" },
+      { title: "Всё вышеперечисленное", desc: "Комплексная инфраструктура с базами данных и LLM.", flag: "all" }
     ]);
   } else if (currentStep === 2) {
     quizAnswers.automationTarget = selectedValue;
     currentStep = 3;
     renderQuizStep("Шаг 3 из 3", "Где должен функционировать продукт?", [
-      { title: "Текстовый Telegram-бот", desc: "Асинхронные команды и рассылки на aiogram 3." },
-      { title: "Telegram Mini App (Интерфейс)", desc: "Полноценный Web App веб-интерфейс внутри чата." },
-      { title: "Интеграция на текущий сайт", desc: "FastAPI эндпоинты и обработка REST API." }
+      { title: "Текстовый Telegram-бот", desc: "Асинхронные команды и рассылки на aiogram 3.", flag: "bot" },
+      { title: "Telegram Mini App (Интерфейс)", desc: "Полноценный Web App веб-интерфейс внутри чата.", flag: "ui" },
+      { title: "Интеграция на текущий сайт", desc: "FastAPI эндпоинты и обработка REST API.", flag: "ui" }
     ]);
   } else if (currentStep === 3) {
     quizAnswers.platformType = selectedValue;
+    // Финальный шаг — переносим ответы в калькулятор и скроллим
     applyQuizToCalculator();
   }
 }
@@ -39,25 +41,29 @@ function renderQuizStep(stepText, questionText, options) {
   document.getElementById("quiz-question").innerText = questionText;
 
   let container = document.getElementById("quiz-options-container");
-  container.innerHTML = "";
+  container.innerHTML = ""; // Очищаем старые карточки
 
   options.forEach(opt => {
     let card = document.createElement("div");
-    card.className = "bg-[var(--card)] border border-[var(--border)] p-7 rounded-[var(--radius)] cursor-pointer transition-all hover:border-white/30 hover:-translate-y-0.5";
+    card.className = "quiz-card";
     card.onclick = function () { nextQuizStep(opt.title); };
-    card.innerHTML = `<h3 class="m-0 mb-3 text-lg font-bold text-white tracking-tight">${opt.title}</h3><p class="m-0 text-sm text-[var(--muted-foreground)] leading-relaxed">${opt.desc}</p>`;
+    card.innerHTML = `<h3>${opt.title}</h3><p>${opt.desc}</p>`;
     container.appendChild(card);
   });
 }
 
 function applyQuizToCalculator() {
+  // Включаем аддоны калькулятора на основе ответов в квизе
   document.getElementById("db-addon").checked = true;
   document.getElementById("ai-addon").checked = true;
   document.getElementById("ui-addon").checked = true;
 
   calculateTotal();
+
+  // Плавный скролл к экрану цен
   scrollToSection("calc-section");
 
+  // Перезапускаем квиз в исходное состояние, если клиент захочет пройти снова
   currentStep = 1;
   setTimeout(() => {
     renderQuizStep("Шаг 1 из 3", "Какая у вас сфера бизнеса?", [
@@ -86,7 +92,7 @@ function downloadGuide() {
     alert("Пожалуйста, заполните имя и ваш Telegram для отправки гайда!");
     return;
   }
-  alert(`Спасибо, ${name}! Демонстрационный лид зафиксирован. В боевой версии бэкенд на FastAPI запишет юзернейм ${tg} в базу данных.`);
+  alert(`Спасибо, ${name}! Демонстрационный лид успешно зафиксирован во фронтенде. В боевой версии бэкенд на FastAPI запишет юзернейм ${tg} в базу данных.`);
 }
 
 function submitOrder() {
